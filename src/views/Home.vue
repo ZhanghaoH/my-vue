@@ -13,6 +13,10 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
-  }
+  },
+  async created() {
+    const { data } = await this.$http({ method: 'get', url: 'data.json'})
+    console.log('data: ', data);
+  },
 }
 </script>
