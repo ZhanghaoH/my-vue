@@ -76,17 +76,17 @@ module.exports = {
       //     });
   },
   // 配置高于chainWebpack中关于 css loader 的配置
-  css: {
-      sourceMap: true,
-      loaderOptions: {
-          css: {
-              // 这里的选项会传递给 css-loader
-          },
-          postcss: {
-              // 这里的选项会传递给 postcss-loader
-          }
-      }
-  },
+//   css: {
+//       sourceMap: true,
+//       loaderOptions: {
+//           css: {
+//               // 这里的选项会传递给 css-loader
+//           },
+//           postcss: {
+//               // 这里的选项会传递给 postcss-loader
+//           }
+//       }
+//   },
   //所有 webpack-dev-server 的选项都支持
   // https://webpack.docschina.org/configuration/dev-server/
   devServer: {
