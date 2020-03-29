@@ -10,9 +10,10 @@ loading.install = Vue => {
 	document.body.appendChild(instance.$el);
 
 	const loading = {
-		show(text, icon) {
+		show({text, icon, hasCover = false }) {
 			text && (instance.text = text);
-			icon && (instance.icon = icon);
+      icon && (instance.icon = icon);
+      instance.hasCover = hasCover;
 			instance.show();
 		},
 		hide() {

@@ -1,7 +1,23 @@
 import axios from 'axios'
 
 export default async (opts) =>  {
-  return await axios(opts).then(data => {
+  const axiosInstance = axios.create();
+
+  axiosInstance.interceptors.request.use(req => {
+    // this.$loading.show();
+  }, err => {
+    console.log('err: ', err);
+  });
+
+  axiosInstance.interceptors.response.use(res => {
+    console.log('res: ', res);
+    // this.$loading.hide();
+  }, err => {
+    console.log('err: ', err);
+  });
+
+
+  return await axiosInstance(opts).then(data => {
     return data;
   }).catch(e => {
     return e || { err_desc: '请求出错' }

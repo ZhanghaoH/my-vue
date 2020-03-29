@@ -1,5 +1,5 @@
 <template>
-  <div class="loading-cover" v-if="isVisible">
+  <div class="loading-cover" :class="{ 'has-cover': hasCover }" v-if="isVisible">
     <div class="loading-wrapper">
       <div class="loading-icon" v-if="icon">
         <img :src="icon" alt="加载中...">
@@ -24,6 +24,7 @@
     data() {
       return {
         isVisible: false,
+        hasCover: true,
       }
     },
     methods: {
@@ -45,7 +46,9 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    // background-color: rgba(0, 0, 0, .4);
+    &.has-cover {
+      background-color: rgba(0, 0, 0, .4);
+    }
     .loading-wrapper {
       background-color: #fff;
       padding: 15px;

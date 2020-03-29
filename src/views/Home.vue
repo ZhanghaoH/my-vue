@@ -9,6 +9,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import axios from 'axios';
+import http from '@/utils/http'
 
 export default {
   name: 'Home',
@@ -39,8 +40,8 @@ export default {
     }
   },
   async created() {
-    const { data } = await this.$http({ method: 'get', url: 'data.json'})
-    // console.log('data: ', data);
+    const data = await http({ method: 'get', url: 'data.json'})
+    console.log('data: ', data);
 
     // 创建实例  以应对不同请求的个性化需求如超时时间不同 地址不同等
     let instance = axios.create({

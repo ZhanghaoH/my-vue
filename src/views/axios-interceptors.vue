@@ -12,6 +12,7 @@ import axios from 'axios';
 export default {
   created () {
     
+    console.log('axios: ', axios);
     let cancelToken = axios.cancelToken;
     let source = cancelToken.source();
 
@@ -42,7 +43,7 @@ export default {
       return config;
     }, err => {
       // 请求错误做些什么
-      return Promis.reject(err);
+      return Promise.reject(err);
     });
 
     /**

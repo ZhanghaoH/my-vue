@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import http from '@/utils/http'
 export default {
   name: 'app',
   provide () {
@@ -23,7 +24,7 @@ export default {
   },
   methods: {
     async getTitle() {
-      const { data } = await this.$http({
+      const { data } = await http({
         method: 'get',
         url: '/data.json'
       });
@@ -31,10 +32,6 @@ export default {
     }
   },
   mounted() {
-    this.$loading.show();
-    setTimeout(() => {
-      this.$loading.hide();
-    }, 1500);
   }
 }
 </script>
