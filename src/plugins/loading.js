@@ -1,10 +1,8 @@
 import mLoading from '@/components/loading.vue';
 
-let installed = false;
+const loading = {}
 
-const install = Vue => {
-	// if (installed) return;
-
+loading.install = Vue => {
 	const LoadingConstructor = Vue.extend(mLoading);
 	const instance = new LoadingConstructor();
 
@@ -23,9 +21,6 @@ const install = Vue => {
 	};
 	//将方法挂载全局
   Vue.prototype.$loading = loading;
-  // installed = true;
 };
 
-export default {
-	install
-};
+export default loading
