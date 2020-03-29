@@ -8,6 +8,37 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'app',
+  provide () {
+    return {
+      app: this //将app实例暴露
+    }
+  },
+  data () {
+    return {
+      title: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    async getTitle() {
+      const { data } = await this.$http({
+        method: 'get',
+        url: '/data.json'
+      });
+      this.title = data.title;
+    }
+  },
+  mounted() {
+    this.$loading.show();
+    setTimeout(() => {
+      this.$loading.hide();
+    }, 1500);
+  }
+}
+</script>
+
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
