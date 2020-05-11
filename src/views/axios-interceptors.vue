@@ -12,9 +12,8 @@ import axios from 'axios';
 export default {
   created () {
     
-    console.log('axios: ', axios);
-    let cancelToken = axios.cancelToken;
-    let source = cancelToken.source();
+    let CancelToken = axios.CancelToken;
+    let source = CancelToken.source();
 
     axios.get('data.json', { 
       cancelToken: source.token
@@ -30,7 +29,7 @@ export default {
     })
 
     // 取消请求 参数可选 类似$.ajax.abort()
-    source.cancel(msg || '请求被取消');
+    source.cancel('请求被取消');
 
     /**
      * *请求拦截器

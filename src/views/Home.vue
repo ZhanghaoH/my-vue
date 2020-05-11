@@ -21,6 +21,11 @@ export default {
   data() {
     return {
       // msg: this.app.title
+      list: [
+        { name: 'zhang', id: '001' },
+        { name: 'zhang2', id: '002' },
+        { name: 'zhang3', id: '003' }
+      ]
     }
   },
   computed: {
@@ -36,12 +41,18 @@ export default {
     async updateMsg(params) {
       // 通过调用app的更新title方法更新依赖title的msg
       const data = await this.app.getTitle();
-      console.log('data: ', data);
+      // console.log('data: ', data);
     }
   },
   async created() {
-    const data = await http({ method: 'get', url: 'data.json'})
-    console.log('data: ', data);
+    try {
+      const data = await http({ method: 'get', url: 'data.json'})
+      // console.log('data: ', data);
+      
+    } catch (error) {
+      // console.log('error: ', error);
+      
+    }
 
     // 创建实例  以应对不同请求的个性化需求如超时时间不同 地址不同等
     let instance = axios.create({
@@ -58,8 +69,15 @@ export default {
     });
 
     instance.get('/data.json', { timeout: 15000 }).then(res => {
-      console.log(res);
+      // console.log(res);
     })
+  },
+  mounted() {
+    for(let id of this.list) {
+      id.id = `id-${id.id}`
+      id.fullStr = `${id.id}__${id.name}`
+    }
+    // console.log(JSON.stringify(this.list))
   },
 }
 </script>

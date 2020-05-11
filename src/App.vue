@@ -32,6 +32,7 @@ export default {
     }
   },
   mounted() {
+    // this.$loading.show({})
   }
 }
 </script>

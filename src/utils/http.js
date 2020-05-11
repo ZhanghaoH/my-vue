@@ -1,27 +1,29 @@
-import axios from 'axios'
+import axios from 'axios';
+import loading from '@/plugins/loading'
+import Vue from 'vue'
+// import { Toast } from 'vant'
+
+const vueInstance = new Vue;
 
 export default async (opts) =>  {
   const axiosInstance = axios.create();
 
   axiosInstance.interceptors.request.use(req => {
-    // this.$loading.show();
+    vueInstance.$loading.show({});
+    return req;  //要返回参数
   }, err => {
     console.log('err: ', err);
   });
 
   axiosInstance.interceptors.response.use(res => {
-    console.log('res: ', res);
-    // this.$loading.hide();
+    vueInstance.$loading.hide();
   }, err => {
+    vueInstance.$loading.hide();
     console.log('err: ', err);
   });
 
 
-  return await axiosInstance(opts).then(data => {
-    return data;
-  }).catch(e => {
-    return e || { err_desc: '请求出错' }
-  })
+  return await axiosInstance(opts)
 }
 
 /**
